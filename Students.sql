@@ -1,14 +1,16 @@
-'Created a Database'
+'\'Created a Database\''
 Create Database Students;
 
-'Activated Database'
+'\'Activated Database\''
 use Students;
-'Previously i loaded the ID as Int due to which  i altered ID columns and changed datatype to text'
+
+'\'Previously i loaded the ID as Integer due to which  i altered ID columns and changed datatype to text(Varchar)\''
+
 alter table Bio
-modify column ID text;
+modify column ID Varchar(50);
 
 alter table student
-modify column ID text;
+modify column ID varchar(50);
 
 'Added a column name NewDOB and convereted the Dob To NewDOB using Str_todate function '
 alter table student
@@ -92,11 +94,17 @@ group by (Years);
 
 ' e) Find the average age of boys.'
 
+'Added A column (Age).'
+
 alter table student
 add column Age Int;
 
+'Calculated Age.'
+
 Update student
 set Age = year(current_date)-year(NewDob);
+
+'Solution'
 
 Select Avg(age) from student
 where sex="M";
@@ -134,7 +142,6 @@ the Physics Club.'
 
 select Id,Fullname from chem
 where Id in (select id from bio) and id not in (select id from phy);
-
 
 
 '6. A machinery company stores the parts information in a table with the following structure:
